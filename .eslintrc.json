@@ -1,0 +1,12 @@
+{
+  "extends": "standard-with-typescript",
+  
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "rules": {
+    "camelcase": [2, {"properties": "always"}],
+    "@typescript-eslint/consistent-type-definitions": "off",
+    "@typescript-eslint/strict-boolean-expressions": "off"
+  }
+}
