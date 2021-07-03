@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev src/api-v1/infra/server.ts",
+    "dev": "ts-node-dev src/infra/server.ts",
     "test": "jest --passWithNoTests",
     "test:watch": "yarn test -- --watch",
     "test:staged": "yarn test -- --findRelatedTests",

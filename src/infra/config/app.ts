@@ -1,3 +1,15 @@
-import express from 'express'
+import Express from 'express'
 
-export const app = express()
+class ExpressDrive {
+  public app: Express.Application
+
+  constructor () {
+    this.app = Express()
+    this.setMiddlewares()
+  }
+
+  private setMiddlewares (): void {
+  }
+}
+
+export default new ExpressDrive().app

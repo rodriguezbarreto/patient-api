@@ -1,4 +1,4 @@
-import { app } from './config/app'
+import app from '../infra/config/app'
 
 const PORT = 4000
 app.listen(PORT, () => {
