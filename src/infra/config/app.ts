@@ -1,19 +1,8 @@
-import Express from 'express'
-import { bodyParser, contentType, cors } from './middlewares'
+import setupMiddlewares from './middlewares-config'
+import setupRoutes from './routes-config'
+import express from 'express'
 
-class App {
-  public express: Express.Application
-
-  constructor () {
-    this.express = Express()
-    this.setMiddlewares()
-  }
-
-  private setMiddlewares (): void {
-    this.express.use(bodyParser)
-    this.express.use(cors)
-    this.express.use(contentType)
-  }
-}
-
-export default new App().express
+const app = express()
+setupMiddlewares(app)
+setupRoutes(app)
+export default app
