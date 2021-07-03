@@ -1,5 +1,5 @@
 import Express from 'express'
-import { bodyParser } from './middlewares/body-parse/body-parser'
+import { bodyParser, cors } from './middlewares'
 
 class App {
   public express: Express.Application
@@ -11,6 +11,7 @@ class App {
 
   private setMiddlewares (): void {
     this.express.use(bodyParser)
+    this.express.use(cors)
   }
 }
 
