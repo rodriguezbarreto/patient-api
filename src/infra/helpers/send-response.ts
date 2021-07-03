@@ -1,4 +1,4 @@
-import { ResponseHandler } from '../../presentation/types/handlers-types'
+import { ResponseHandler } from '../../presentation/protocols/http'
 
 export const sendResponse = (statusCode: number, data: any): ResponseHandler => {
   const validateError = statusCode >= 200 && statusCode <= 299

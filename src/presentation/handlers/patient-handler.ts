@@ -1,5 +1,5 @@
 import httpStatus from 'http-status'
-import { ResponseHandler } from '../types/handlers-types'
+import { ResponseHandler } from '../protocols/http'
 import { Patient } from '../../domain/entities/patient'
 import fieldsValidator from '../../infra/helpers/fields-validator'
 import { sendResponse } from '../../infra/helpers/send-response'
