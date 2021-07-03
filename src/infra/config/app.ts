@@ -1,17 +1,17 @@
 import Express from 'express'
 import { bodyParser } from './middlewares/body-parse/body-parser'
 
-class ExpressDrive {
-  public app: Express.Application
+class App {
+  public express: Express.Application
 
   constructor () {
-    this.app = Express()
+    this.express = Express()
     this.setMiddlewares()
   }
 
   private setMiddlewares (): void {
-    this.app.use(bodyParser)
+    this.express.use(bodyParser)
   }
 }
 
-export default new ExpressDrive().app
+export default new App().express
