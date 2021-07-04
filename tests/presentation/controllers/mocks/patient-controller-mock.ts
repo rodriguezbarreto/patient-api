@@ -1,4 +1,4 @@
-import { HttpResponse, HttpRequest } from '../../../src/presentation/protocols'
+import { HttpResponse, HttpRequest } from '../../../../src/presentation/protocols'
 
 export const paramErrorResponse: HttpResponse = {
   success: false,

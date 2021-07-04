@@ -4,14 +4,18 @@ import { patientFields } from '../models-fields'
 
 export default class PatientController {
   public async create (request: HttpRequest): Promise<HttpResponse> {
-    const error = fieldsValidator(patientFields, request.body)
-    if (error) return sendResponse(400, error)
+    try {
+      const error = fieldsValidator(patientFields, request.body)
+      if (error) return sendResponse(400, error)
 
-    return {
-      success: true,
-      statusCode: 200,
-      data: 'any',
-      error: 'any'
+      return {
+        success: true,
+        statusCode: 200,
+        data: 'any',
+        error: 'any'
+      }
+    } catch (err) {
+      return sendResponse(500)
     }
   }
 }
