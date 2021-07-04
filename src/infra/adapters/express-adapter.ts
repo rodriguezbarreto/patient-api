@@ -1,6 +1,5 @@
-import { ControllerMethod } from '../../presentation/protocols/controller-method'
+import { ControllerMethod, HttpRequest } from '../../presentation/protocols'
 import { Request, Response } from 'express'
-import { HttpRequest } from '../../presentation/protocols'
 
 export const adaptExpress = (controllerMethod: ControllerMethod) => {
   return async (req: Request, res: Response) => {
