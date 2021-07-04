@@ -1,10 +1,11 @@
 export interface HttpResponse {
   success: boolean
-  status: any
+  statusCode: number
   data: any
   error: any
 }
 
-export interface HttpResquest {
+export interface HttpRequest {
   body?: any
+  params?: any
 }

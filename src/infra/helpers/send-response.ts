@@ -1,6 +1,6 @@
-import { ResponseHandler } from '../../presentation/protocols/http'
+import { HttpResponse } from '../../presentation/protocols/http'
 
-export const sendResponse = (statusCode: number, data: any): ResponseHandler => {
+export const sendResponse = (statusCode: number, data: any): HttpResponse => {
   const validateError = statusCode >= 200 && statusCode <= 299
   return {
     success: !!validateError,
