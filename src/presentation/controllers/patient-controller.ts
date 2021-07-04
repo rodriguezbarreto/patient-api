@@ -7,13 +7,6 @@ export default class PatientController {
     try {
       const error = fieldsValidator(patientFields, request.body)
       if (error) return sendResponse(400, error)
-
-      return {
-        success: true,
-        statusCode: 200,
-        data: 'any',
-        error: 'any'
-      }
     } catch (err) {
       return sendResponse(500)
     }
