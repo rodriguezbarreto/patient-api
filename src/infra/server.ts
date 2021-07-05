@@ -1,6 +1,14 @@
 import app from '../infra/config/app'
+import { connectionPostgres } from '../data/respositories/postgres'
 
-const PORT = 4000
-app.listen(PORT, () => {
-  console.log(`Server is listening on ${PORT}`)
+connectionPostgres()
+
+const PORT = 4006
+const server = app.listen(PORT, () => {
+  console.log(`--> Server: ON (listening port: ${PORT})`)
+})
+
+process.on('SIGINT', () => {
+  server.close()
+  console.log('\n--> Server: OFF')
 })
