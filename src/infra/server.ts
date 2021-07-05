@@ -1,5 +1,5 @@
 import app from '../infra/config/app'
-import { connectionPostgres } from '../data/respositories/postgres'
+import { connectionPostgres } from './database'
 
 connectionPostgres()
 
