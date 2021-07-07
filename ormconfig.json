@@ -4,5 +4,11 @@
     "port": 5432,
     "username": "postgres",
     "password": "postgres",
-    "database": "pebmedapi"
+    "database": "pebmedapi",
+    "migrations": [
+        "./src/ifra/database/postgres/migrations/*.ts"
+    ],
+    "cli": {
+        "migrationsDir": "./src/ifra/database/postgres/migrations"
+    }
 }
