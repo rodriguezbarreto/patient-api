@@ -6,9 +6,9 @@
     "password": "postgres",
     "database": "pebmedapi",
     "migrations": [
-        "./src/ifra/database/postgres/migrations/*.ts"
+        "./src/infra/database/postgres/migrations/*.ts"
     ],
     "cli": {
-        "migrationsDir": "./src/ifra/database/postgres/migrations"
+        "migrationsDir": "./src/infra/database/postgres/migrations"
     }
 }
