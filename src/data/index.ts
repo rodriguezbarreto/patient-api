@@ -1,1 +1,1 @@
-export * from './implementations/patient/handle-create-patient'
+export * from './services/service-create-patient'
