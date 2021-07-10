@@ -26,7 +26,7 @@ export const connectionDB = {
       username: 'postgres',
       password: 'postgres',
       database: 'pebmedapi_test', // todo: add as variable in .env file
-      entities: ['../database/postgres/models/*.ts'],
+      entities: ['./src/infra/database/postgres/models/*.ts'],
       migrations: ['./src/infra/database/postgres/migrations/*.ts'],
       cli: {
         migrationsDir: '../database/postgres/migrations/*.ts'

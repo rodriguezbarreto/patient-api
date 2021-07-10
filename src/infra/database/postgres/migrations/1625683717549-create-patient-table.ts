@@ -15,6 +15,11 @@ export class createPatientTable1625683717549 implements MigrationInterface {
             default: 'uuid_generate_v4()'
           },
           {
+            name: 'name',
+            type: 'varchar',
+            isNullable: false
+          },
+          {
             name: 'phone',
             type: 'varchar',
             isNullable: false
