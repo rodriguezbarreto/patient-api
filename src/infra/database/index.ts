@@ -1,2 +1,2 @@
 export * from './postgres/models/patient-model'
-export * from './postgres/repositories/pateint-postgres-repository'
+export * from './postgres/repositories/patient-postgres-repository'
