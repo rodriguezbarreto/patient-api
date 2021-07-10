@@ -9,6 +9,6 @@ export class PatientPostgresRespository {
     if (result) return false
 
     const newPatient = await this.handle.save(patient)
-    return !!newPatient
+    return !!newPatient && !!newPatient.id
   }
 }

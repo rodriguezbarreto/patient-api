@@ -46,6 +46,6 @@ export class createPatientTable1625683717549 implements MigrationInterface {
 
   public async down (queryRunner: QueryRunner): Promise<void> {
     await queryRunner.dropTable('patients')
-    await queryRunner.query('DROP EXTENSION "uuid-ossp')
+    await queryRunner.query('DROP EXTENSION "uuid-ossp"')
   }
 }
