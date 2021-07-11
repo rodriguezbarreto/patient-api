@@ -1,6 +1,6 @@
 import { ListPatientsRepository, ListPatientsService } from '../../src/data'
 import { Patient } from '../../src/domain'
-import { PatientModel } from '../../src/infra/database'
+import { PatientModel } from '../../src/infra/libs'
 
 const fakePatientsList: PatientModel[] = [
   {

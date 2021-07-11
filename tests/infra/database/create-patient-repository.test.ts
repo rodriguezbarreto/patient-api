@@ -1,6 +1,7 @@
 import { Connection } from 'typeorm'
 import { connectionDB } from '../../../src/infra/config/connectorDB'
-import { PatientModel, CreatePatientPostgresRespository } from '../../../src/infra/database'
+import { CreatePatientPostgresRespository } from '../../../src/infra/database'
+import { PatientModel } from '../../../src/infra/libs'
 
 let connection: Connection
 describe('Patient Postgres Respository', () => {
