@@ -29,7 +29,7 @@ export const connectionDB = {
       port: 5433,
       username: 'postgres',
       password: 'postgres',
-      database: 'pebmedapi', // todo: add as variable in .env file
+      database: 'pebmedapi_test', // todo: add as variable in .env file
       entities: ['./src/infra/libs/typeorm/models/*.ts'],
       migrations: ['./src/infra/libs/typeorm/migrations/*.ts'],
       cli: {
