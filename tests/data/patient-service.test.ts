@@ -1,5 +1,5 @@
 import { CreatePatientService } from '../../src/data'
-import { CreatePatientRepository } from '../../src/data/service-protocols/create-patient-repository'
+import { CreatePatientRepository } from '../../src/data/service-protocols/patient-repository'
 import { Patient } from '../../src/domain'
 
 const fakeDataPatient: Patient = {

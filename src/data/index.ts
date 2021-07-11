@@ -1,2 +1,2 @@
 export * from './services/patient-service'
-export * from './service-protocols/create-patient-repository'
+export * from './service-protocols/patient-repository'

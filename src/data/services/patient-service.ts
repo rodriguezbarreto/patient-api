@@ -1,5 +1,6 @@
 import { Patient, CreatePatient } from '../../domain'
-import { CreatePatientRepository } from '../service-protocols/create-patient-repository'
+import { ListPatients } from '../../domain/usecases/list-patients'
+import { CreatePatientRepository, ListPatientsRepository } from '../service-protocols/patient-repository'
 
 export class CreatePatientService implements CreatePatient {
   constructor (private readonly repository: CreatePatientRepository) {}
@@ -7,5 +8,13 @@ export class CreatePatientService implements CreatePatient {
   async create (patient: Patient): Promise<boolean> {
     const result = await this.repository.createPatient(patient)
     if (result) return true
+  }
+}
+
+export class ListPatientsService implements ListPatients {
+  constructor (private readonly respository: ListPatientsRepository) {}
+
+  async list (): Promise<Patient[]> {
+    return await this.respository.listPatients()
   }
 }
