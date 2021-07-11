@@ -6,10 +6,10 @@ export const connectionDB = {
       const connection = await createConnection({
         type: 'postgres',
         host: 'localhost',
-        port: 5432,
+        port: 5433,
         username: 'postgres',
         password: 'postgres',
-        database: 'pebmedapi',
+        database: 'pebmedapi', // todo: add as variable in .env file
         entities: ['./src/infra/database/postgres/models/*.ts'],
         migrations: ['./src/infra/database/postgres/migrations/*.ts'],
         cli: {
@@ -26,10 +26,10 @@ export const connectionDB = {
     return await createConnection({
       type: 'postgres',
       host: 'localhost',
-      port: 5432,
+      port: 5433,
       username: 'postgres',
       password: 'postgres',
-      database: 'pebmedapi_test', // todo: add as variable in .env file
+      database: 'pebmedapi', // todo: add as variable in .env file
       entities: ['./src/infra/database/postgres/models/*.ts'],
       migrations: ['./src/infra/database/postgres/migrations/*.ts'],
       cli: {
