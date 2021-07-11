@@ -4,14 +4,14 @@ import { CreatePatientPostgresRespository } from '../../../src/infra/database'
 import { PatientModel } from '../../../src/infra/libs'
 
 let connection: Connection
-describe.skip('Patient Postgres Respository', () => {
-  beforeEach(async () => {
+describe('Patient Postgres Respository', () => {
+  beforeAll(async () => {
     connection = await connectionDB.postgresForTest()
     await connection.runMigrations()
   })
 
-  afterEach(async () => {
-    await connection.undoLastMigration()
+  afterAll(async () => {
+    await connection.dropDatabase()
     await connection.close()
   })
   test('should return false when there is already a patient with the same phone', async () => {
