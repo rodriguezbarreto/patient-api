@@ -11,7 +11,7 @@ export default class CreatePatientController implements Controller {
       const error = fieldsValidator(patientFields, request.body)
       if (error) return sendResponse(400, error)
       const newPatient = await this.createService.create(request.body)
-      return newPatient ? sendResponse(200) : sendResponse(400)
+      return newPatient ? sendResponse(201) : sendResponse(400)
     } catch (err) {
       return sendResponse(500, err.message)
     }
