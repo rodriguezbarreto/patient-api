@@ -1,3 +1,5 @@
 import { HttpRequest, HttpResponse } from './http'
 
-export type ControllerMethod = (req: HttpRequest) => Promise<HttpResponse>
+export interface Controller{
+  service: (request: HttpRequest) => Promise<HttpResponse>
+}

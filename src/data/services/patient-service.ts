@@ -1,5 +1,4 @@
-import { Patient } from '../../domain/entities/patient'
-import { CreatePatient } from '../../domain/usecases/create-patient'
+import { Patient, CreatePatient } from '../../domain'
 import { CreatePatientRepository } from '../service-protocols/create-patient-repository'
 
 export class CreatePatientService implements CreatePatient {

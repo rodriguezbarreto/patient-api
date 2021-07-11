@@ -1,12 +1,14 @@
-import { Repository } from 'typeorm'
+import { getRepository } from 'typeorm'
 import { CreatePatientRepository } from '../../../../data'
 import { Patient } from '../../../../domain'
 import { PatientModel } from '../models/patient-model'
 export class PatientPostgresRespository implements CreatePatientRepository {
-  constructor (private readonly handle: Repository<PatientModel>) {}
-
-  public async createPatient (patient: Patient): Promise<PatientModel> {
+  public async createPatient (patient: Patient): Promise<boolean> {
+    const repository = getRepository(PatientModel)
     const { phone } = patient
-    return await this.handle.findOne({ where: { phone } })
+    const result = await repository.findOne({ where: { phone } })
+    if (result) return false
+    const newPatient = await repository.save(patient)
+    return !!newPatient && !!newPatient.id
   }
 }
