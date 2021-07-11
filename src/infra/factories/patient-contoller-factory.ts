@@ -1,10 +1,10 @@
 
 import { CreatePatientService } from '../../data'
 import PatientController from '../../presentation/controllers/create-patient-controller'
-import { PatientPostgresRespository } from '../database'
+import { CreatePatientPostgresRespository } from '../database'
 
 export const makeCreatePatientController = (): any => {
-  const repository = new PatientPostgresRespository()
+  const repository = new CreatePatientPostgresRespository()
   const service = new CreatePatientService(repository)
   return new PatientController(service)
 }

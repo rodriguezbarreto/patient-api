@@ -1,6 +1,6 @@
 import { Connection } from 'typeorm'
 import { connectionDB } from '../../../src/infra/config/connectorDB'
-import { PatientModel, PatientPostgresRespository } from '../../../src/infra/database'
+import { PatientModel, CreatePatientPostgresRespository } from '../../../src/infra/database'
 
 let connection: Connection
 describe('Patient Postgres Respository', () => {
@@ -28,7 +28,7 @@ describe('Patient Postgres Respository', () => {
         height: 180,
         weight: 98.6
       }).execute()
-    const sut = new PatientPostgresRespository()
+    const sut = new CreatePatientPostgresRespository()
     const fakeNewPatient = await sut.createPatient({
       name: 'Daniel',
       birthDate: '28/02/1988',
@@ -49,7 +49,7 @@ describe('Patient Postgres Respository', () => {
         height: 180,
         weight: 98.6
       }).execute()
-    const sut = new PatientPostgresRespository()
+    const sut = new CreatePatientPostgresRespository()
     const fakeNewPatient = await sut.createPatient({
       name: 'Daniel',
       birthDate: '28/02/1988',
@@ -61,7 +61,7 @@ describe('Patient Postgres Respository', () => {
   })
 
   test('throw an exception if database return error', async () => {
-    const sut = new PatientPostgresRespository()
+    const sut = new CreatePatientPostgresRespository()
     jest.spyOn(sut, 'createPatient').mockReturnValueOnce(new Promise((resolve, reject) => reject(new Error())))
     const promise = sut.createPatient({
       name: 'Daniel',

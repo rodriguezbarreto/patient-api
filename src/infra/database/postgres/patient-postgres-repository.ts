@@ -2,7 +2,7 @@ import { getRepository } from 'typeorm'
 import { CreatePatientRepository } from '../../../data'
 import { Patient } from '../../../domain'
 import { PatientModel } from '../../libs/typeorm/models/patient-model'
-export class PatientPostgresRespository implements CreatePatientRepository {
+export class CreatePatientPostgresRespository implements CreatePatientRepository {
   public async createPatient (patient: Patient): Promise<boolean> {
     const repository = getRepository(PatientModel)
     const { phone } = patient
