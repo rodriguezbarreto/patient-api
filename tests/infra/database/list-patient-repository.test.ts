@@ -2,15 +2,9 @@ import { Connection } from 'typeorm'
 import { connectionDB } from '../../../src/infra/config/connectorDB'
 import { ListPatientPostgresRepository } from '../../../src/infra/database'
 import { PatientModel } from '../../../src/infra/libs'
-let connection: Connection
-describe('Patient Postgres Respository', () => {
-  // beforeAll(async () => {
-  //   connection = await connectionDB.postgresForTest()
-  // })
-  // afterAll(async () => {
-  //   await connection.close()
-  // })
 
+let connection: Connection
+describe.skip('Patient Postgres Respository', () => {
   beforeEach(async () => {
     connection = await connectionDB.postgresForTest()
     await connection.runMigrations()

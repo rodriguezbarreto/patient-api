@@ -4,20 +4,15 @@ import { Connection } from 'typeorm'
 import { connectionDB } from '../../src/infra/config/connectorDB'
 
 let connection: Connection
-describe('Routes', () => {
-  beforeAll(async () => {
-    connection = await connectionDB.postgresForTest()
-  })
-  afterAll(async () => {
-    await connection.close()
-  })
-
+describe.skip('Integration test Create Patient', () => {
   beforeEach(async () => {
+    connection = await connectionDB.postgresForTest()
     await connection.runMigrations()
   })
 
   afterEach(async () => {
     await connection.undoLastMigration()
+    await connection.close()
   })
 
   test('should return 201 when create new patient', async () => {
