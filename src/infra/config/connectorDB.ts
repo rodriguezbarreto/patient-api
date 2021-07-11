@@ -10,8 +10,8 @@ export const connectionDB = {
         username: 'postgres',
         password: 'postgres',
         database: 'pebmedapi', // todo: add as variable in .env file
-        entities: ['./src/infra/database/postgres/models/*.ts'],
-        migrations: ['./src/infra/database/postgres/migrations/*.ts'],
+        entities: ['./src/infra/libs/typeorm/models/*.ts'],
+        migrations: ['./src/infra/libs/typeorm/migrations/*.ts'],
         cli: {
           migrationsDir: '../database/postgres/migrations/*.ts'
         }
@@ -30,8 +30,8 @@ export const connectionDB = {
       username: 'postgres',
       password: 'postgres',
       database: 'pebmedapi', // todo: add as variable in .env file
-      entities: ['./src/infra/database/postgres/models/*.ts'],
-      migrations: ['./src/infra/database/postgres/migrations/*.ts'],
+      entities: ['./src/infra/libs/typeorm/models/*.ts'],
+      migrations: ['./src/infra/libs/typeorm/migrations/*.ts'],
       cli: {
         migrationsDir: '../database/postgres/migrations/*.ts'
       }
