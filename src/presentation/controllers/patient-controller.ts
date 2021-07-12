@@ -25,8 +25,8 @@ export class ListPatientsController implements Controller {
   async service (request: HttpRequest): Promise<HttpResponse> {
     try {
       const listPatients = await this.listService.list()
-      if (listPatients.length < 0) return sendResponse(200, 'no registered patient')
-      return sendResponse(200, listPatients)
+      if (listPatients.length > 0) return sendResponse(200, listPatients)
+      return sendResponse(200, 'no registered patient')
     } catch (err) {
       return sendResponse(500, err.message)
     }

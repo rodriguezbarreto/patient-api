@@ -13,7 +13,7 @@ export const connectionDB = {
         entities: ['./src/infra/libs/typeorm/models/*.ts'],
         migrations: ['./src/infra/libs/typeorm/migrations/*.ts'],
         cli: {
-          migrationsDir: '../database/postgres/migrations/*.ts'
+          migrationsDir: './src/infra/libs/typeorm/migrations/'
         }
       })
       console.log(`✔ Connection with Postgres: ON (database: ${connection.options.database})`)
@@ -33,7 +33,7 @@ export const connectionDB = {
       entities: ['./src/infra/libs/typeorm/models/*.ts'],
       migrations: ['./src/infra/libs/typeorm/migrations/*.ts'],
       cli: {
-        migrationsDir: './src/infra/libs/typeorm/postgres/migrations/*.ts'
+        migrationsDir: './src/infra/libs/typeorm/migrations'
       }
     })
   }
