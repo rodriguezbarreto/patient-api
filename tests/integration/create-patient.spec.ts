@@ -4,7 +4,7 @@ import { Connection } from 'typeorm'
 import { connectionDB } from '../../src/infra/config/connectorDB'
 
 let connection: Connection
-describe.skip('Integration test Create Patient', () => {
+describe('Integration test Create Patient', () => {
   beforeAll(async () => {
     connection = await connectionDB.postgresForTest()
     await connection.runMigrations()
