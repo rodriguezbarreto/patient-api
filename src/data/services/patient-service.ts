@@ -7,7 +7,7 @@ export class CreatePatientService implements CreatePatient {
 
   async create (patient: CreatePatient.Params): Promise<boolean> {
     const result = await this.repository.createPatient(patient)
-    if (result) return true
+    return !!result
   }
 }
 

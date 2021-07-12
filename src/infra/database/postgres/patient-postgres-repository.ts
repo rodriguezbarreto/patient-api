@@ -6,6 +6,7 @@ export class CreatePatientPostgresRespository implements CreatePatientRepository
   async createPatient (patient: CreatePatient.Params): Promise<boolean> {
     const repository = getRepository(PatientModel)
     const { phone } = patient
+
     const result = await repository.findOne({ where: { phone } })
     if (result) return false
     const newPatient = await repository.save(patient)

@@ -23,9 +23,7 @@ const errorList: ErrorCustom[] = [
 ]
 
 export const getErrors = (statusCode: number): string => {
-  const payload = errorList.map((err) => {
-    if (err.statusCode === statusCode) return err
-  })
+  const payload = errorList.filter((erro) => erro.statusCode === statusCode)
 
   return payload[0].data
 }
