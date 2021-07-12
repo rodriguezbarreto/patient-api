@@ -15,7 +15,7 @@ describe.skip('Patient Postgres Respository', () => {
     await connection.close()
   })
   test('should return patients list', async () => {
-    connection.createQueryBuilder()
+    await connection.createQueryBuilder()
       .insert()
       .into(PatientModel)
       .values([
