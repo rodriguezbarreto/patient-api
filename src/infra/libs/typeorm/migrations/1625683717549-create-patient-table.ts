@@ -2,7 +2,6 @@ import { MigrationInterface, QueryRunner, Table } from 'typeorm'
 
 export class createPatientTable1625683717549 implements MigrationInterface {
   public async up (queryRunner: QueryRunner): Promise<void> {
-    console.log('teste')
     await queryRunner.query('CREATE EXTENSION IF NOT EXISTS "uuid-ossp"')
     await queryRunner.createTable(
       new Table({
