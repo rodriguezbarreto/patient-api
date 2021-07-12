@@ -4,7 +4,7 @@ import { CreatePatientPostgresRespository } from '../../../src/infra/database'
 import { PatientModel } from '../../../src/infra/libs'
 
 let connection: Connection
-describe('Patient Postgres Respository', () => {
+describe.skip('Patient Postgres Respository', () => {
   beforeAll(async () => {
     connection = await connectionDB.postgresForTest()
     await connection.runMigrations()
@@ -28,6 +28,7 @@ describe('Patient Postgres Respository', () => {
     const fakeNewPatient = await sut.createPatient({
       name: 'Daniel',
       birthDate: '28/02/1988',
+      gender: 'male',
       phone: '48996366726',
       height: 180,
       weight: 98.6
@@ -49,6 +50,7 @@ describe('Patient Postgres Respository', () => {
     const fakeNewPatient = await sut.createPatient({
       name: 'Daniel',
       birthDate: '28/02/1988',
+      gender: 'male',
       phone: '48996366745',
       height: 180,
       weight: 98.6
@@ -62,6 +64,7 @@ describe('Patient Postgres Respository', () => {
     const promise = sut.createPatient({
       name: 'Daniel',
       birthDate: '28/02/1988',
+      gender: 'male',
       phone: '48996366726',
       height: 180,
       weight: 98.6

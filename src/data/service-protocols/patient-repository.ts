@@ -1,7 +1,7 @@
-import { Patient } from '../../domain'
+import { CreatePatient, Patient } from '../../domain'
 
 export interface CreatePatientRepository {
-  createPatient: (patient: Patient) => Promise<boolean>
+  createPatient: (patient: CreatePatient.Params) => Promise<boolean>
 }
 
 export interface ListPatientsRepository {

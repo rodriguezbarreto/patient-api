@@ -10,6 +10,9 @@ export class PatientModel implements Patient {
   name: string
 
   @Column('varchar')
+  gender: string
+
+  @Column('varchar')
   birthDate: string
 
   @Column('varchar')

@@ -4,7 +4,7 @@ import { ListPatientPostgresRepository } from '../../../src/infra/database'
 import { PatientModel } from '../../../src/infra/libs'
 
 let connection: Connection
-describe('Patient Postgres Respository', () => {
+describe.skip('Patient Postgres Respository', () => {
   beforeAll(async () => {
     connection = await connectionDB.postgresForTest()
     await connection.runMigrations()

@@ -1,11 +1,11 @@
 import { ListPatientsRepository, ListPatientsService } from '../../src/data'
 import { Patient } from '../../src/domain'
-import { PatientModel } from '../../src/infra/libs'
 
-const fakePatientsList: PatientModel[] = [
+const fakePatientsList: Patient[] = [
   {
     id: 'testDeId',
     name: 'Daniel',
+    gender: 'male',
     birthDate: '28/02/1988',
     phone: '48996366726',
     height: 180,
@@ -15,6 +15,7 @@ const fakePatientsList: PatientModel[] = [
     id: 'testDeId2',
     name: 'Fabio',
     birthDate: '28/02/1988',
+    gender: 'male',
     phone: '48996366745',
     height: 180,
     weight: 98.6

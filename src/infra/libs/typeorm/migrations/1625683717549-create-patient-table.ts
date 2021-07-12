@@ -20,6 +20,11 @@ export class createPatientTable1625683717549 implements MigrationInterface {
             isNullable: false
           },
           {
+            name: 'gender',
+            type: 'varchar',
+            isNullable: false
+          },
+          {
             name: 'phone',
             type: 'varchar',
             isNullable: false

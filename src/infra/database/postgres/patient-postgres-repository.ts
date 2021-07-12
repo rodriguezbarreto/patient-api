@@ -1,9 +1,9 @@
 import { getRepository } from 'typeorm'
 import { CreatePatientRepository, ListPatientsRepository } from '../../../data'
-import { Patient } from '../../../domain'
+import { CreatePatient, Patient } from '../../../domain'
 import { PatientModel } from '../../libs/typeorm/models/patient-model'
 export class CreatePatientPostgresRespository implements CreatePatientRepository {
-  async createPatient (patient: Patient): Promise<boolean> {
+  async createPatient (patient: CreatePatient.Params): Promise<boolean> {
     const repository = getRepository(PatientModel)
     const { phone } = patient
     const result = await repository.findOne({ where: { phone } })

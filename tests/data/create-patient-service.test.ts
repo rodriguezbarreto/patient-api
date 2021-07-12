@@ -1,10 +1,10 @@
 import { CreatePatientService } from '../../src/data'
 import { CreatePatientRepository } from '../../src/data/service-protocols/patient-repository'
-import { Patient } from '../../src/domain'
 
-const fakeDataPatient: Patient = {
+const fakeDataPatient = {
   name: 'Daniel',
   birthDate: '28/02/1988',
+  gender: 'male',
   phone: '48996366726',
   height: 180,
   weight: 98.6
