@@ -11,7 +11,6 @@ export class CreatePatientService implements CreatePatient {
     return !!result
   }
 }
-
 export class ListPatientsService implements ListPatients {
   constructor (private readonly respository: ListPatientsRepository) {}
 
@@ -19,7 +18,6 @@ export class ListPatientsService implements ListPatients {
     return await this.respository.listPatients()
   }
 }
-
 export class UpdatePatientService implements UpdatePatient {
   constructor (private readonly repository: UpdatePatientRepository) {}
 

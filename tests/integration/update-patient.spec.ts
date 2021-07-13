@@ -17,23 +17,26 @@ const fake = {
   }
 }
 
-describe('Integration test Create Patient', () => {
+describe.skip('Integration test Update Patient', () => {
   beforeAll(async () => {
     connection = await connectionDB.postgresForTest()
     await connection.runMigrations()
-  }, 1000)
+  }, 15000)
 
   afterAll(async () => {
     await connection.dropDatabase()
     await connection.close()
-  }, 10000)
+  }, 15000)
 
+  jest.retryTimes(6)
   test('should return 400 when not find patient', async () => {
     await request(app)
       .put(`/v1/patient/update/${wrongId}`)
       .send(fake.insert)
       .expect(400)
-  })
+  }, 15000)
+
+  jest.retryTimes(6)
   test('should return 200 when updating patient', async () => {
     const repo = connection.getRepository(PatientModel)
     await repo.save(fake.insert)
@@ -42,5 +45,5 @@ describe('Integration test Create Patient', () => {
       .put(`/v1/patient/update/${patient.id}`)
       .send(patient)
       .expect(200)
-  })
+  }, 15000)
 })

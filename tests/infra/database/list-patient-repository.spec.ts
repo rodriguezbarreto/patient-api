@@ -4,38 +4,40 @@ import { ListPatientPostgresRepository } from '../../../src/infra/database'
 import { PatientModel } from '../../../src/infra/libs'
 
 let connection: Connection
-describe.skip('Patient Postgres Respository', () => {
+const fakeListInsert = [
+  {
+    name: 'Daniel',
+    birthDate: '28/02/1988',
+    gender: 'male',
+    phone: '48996366726',
+    height: 180,
+    weight: 98.6
+  },
+  {
+    name: 'Fabio',
+    birthDate: '28/02/1988',
+    gender: 'male',
+    phone: '48996366745',
+    height: 170,
+    weight: 95.6
+  }
+]
+
+describe.skip('List Patient Postgres Respository', () => {
   beforeAll(async () => {
     connection = await connectionDB.postgresForTest()
     await connection.runMigrations()
-  })
+  }, 15000)
 
   afterAll(async () => {
     await connection.dropDatabase()
     await connection.close()
-  })
-  test('should return patients list', async () => {
-    await connection.createQueryBuilder()
-      .insert()
-      .into(PatientModel)
-      .values([
-        {
-          name: 'Daniel',
-          birthDate: '28/02/1988',
-          phone: '48996366726',
-          height: 180,
-          weight: 98.6
-        },
-        {
-          name: 'Fabio',
-          birthDate: '28/02/1988',
-          phone: '48996366745',
-          height: 170,
-          weight: 95.6
-        }
-      ])
-      .execute()
+  }, 15000)
 
+  jest.retryTimes(6)
+  test('should return patients list', async () => {
+    const repo = connection.getRepository(PatientModel)
+    await repo.save(fakeListInsert)
     const sut = new ListPatientPostgresRepository()
     const fakePatienstList = await sut.listPatients()
     expect(fakePatienstList).toEqual(
@@ -44,12 +46,13 @@ describe.skip('Patient Postgres Respository', () => {
         expect.objectContaining({ name: 'Fabio' })
       ])
     )
-  })
+  }, 15000)
 
+  jest.retryTimes(6)
   test('throw an exception if database return error', async () => {
     const sut = new ListPatientPostgresRepository()
     jest.spyOn(sut, 'listPatients').mockReturnValueOnce(new Promise((resolve, reject) => reject(new Error())))
     const promise = sut.listPatients()
     expect(promise).rejects.toThrow()
-  })
+  }, 15000)
 })
