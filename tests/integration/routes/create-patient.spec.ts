@@ -1,7 +1,7 @@
-import app from '../../src/infra/config/app'
+import app from '../../../src/infra/config/app'
 import request from 'supertest'
 import { Connection } from 'typeorm'
-import { connectionDB } from '../../src/infra/config/connectorDB'
+import { connectionDB } from '../../../src/infra/config/connectorDB'
 
 let connection: Connection
 describe.skip('Integration test Create Patient', () => {

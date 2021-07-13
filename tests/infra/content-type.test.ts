@@ -1,4 +1,4 @@
-import app from '../../../src/infra/config/app'
+import app from '../../src/infra/config/app'
 
 import request from 'supertest'
 

@@ -1,8 +1,8 @@
-import app from '../../src/infra/config/app'
 import request from 'supertest'
 import { Connection } from 'typeorm'
-import { connectionDB } from '../../src/infra/config/connectorDB'
-import { PatientModel } from '../../src/infra/libs'
+import app from '../../../src/infra/config/app'
+import { connectionDB } from '../../../src/infra/config/connectorDB'
+import { PatientModel } from '../../../src/infra/libs'
 
 let connection: Connection
 const fakeList = [

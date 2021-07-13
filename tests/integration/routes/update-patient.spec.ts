@@ -1,8 +1,8 @@
-import app from '../../src/infra/config/app'
+import app from '../../../src/infra/config/app'
 import request from 'supertest'
 import { Connection } from 'typeorm'
-import { connectionDB } from '../../src/infra/config/connectorDB'
-import { PatientModel } from '../../src/infra/libs'
+import { connectionDB } from '../../../src/infra/config/connectorDB'
+import { PatientModel } from '../../../src/infra/libs'
 
 let connection: Connection
 const wrongId = 'cf302c12-9d9a-4bad-87ff-c0a5c12637d8'
