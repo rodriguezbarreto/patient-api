@@ -1,19 +1,21 @@
 import app from '../../../src/infra/config/app'
 import request from 'supertest'
 import { Connection } from 'typeorm'
-import { connectionDB } from '../../../src/infra/config/connectorDB'
+import { databaseForTests, clear } from '../../../src/infra/config/database-connector'
 
 let connection: Connection
 describe.skip('Integration test Create Patient', () => {
   beforeAll(async () => {
-    connection = await connectionDB.postgresForTest()
-    await connection.runMigrations()
+    connection = await databaseForTests.postgres()
   }, 15000)
 
   afterAll(async () => {
-    await connection.dropDatabase()
     await connection.close()
   }, 15000)
+
+  beforeEach(async () => {
+    await clear()
+  })
 
   jest.retryTimes(6)
   test('should return 201 when create new patient', async () => {

@@ -1,7 +1,7 @@
 import app from '../infra/config/app'
-import { connectionDB } from '../infra/config/connectorDB'
+import { database } from './config/database-connector'
 
-connectionDB.postsgres()
+database.postgres()
 
 const PORT = 4006
 const server = app.listen(PORT, () => {

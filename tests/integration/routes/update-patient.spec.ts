@@ -1,7 +1,7 @@
 import app from '../../../src/infra/config/app'
 import request from 'supertest'
 import { Connection } from 'typeorm'
-import { connectionDB } from '../../../src/infra/config/connectorDB'
+import { databaseForTests, clear } from '../../../src/infra/config/database-connector'
 import { PatientModel } from '../../../src/infra/libs'
 
 let connection: Connection
@@ -17,16 +17,18 @@ const fake = {
   }
 }
 
-describe.skip('Integration test Update Patient', () => {
+describe('Integration test Update Patient', () => {
   beforeAll(async () => {
-    connection = await connectionDB.postgresForTest()
-    await connection.runMigrations()
+    connection = await databaseForTests.postgres()
   }, 15000)
 
   afterAll(async () => {
-    await connection.dropDatabase()
     await connection.close()
   }, 15000)
+
+  beforeEach(async () => {
+    await clear()
+  })
 
   jest.retryTimes(6)
   test('should return 400 when not find patient', async () => {

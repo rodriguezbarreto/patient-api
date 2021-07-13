@@ -1,5 +1,5 @@
 import { Connection } from 'typeorm'
-import { connectionDB } from '../../../src/infra/config/connectorDB'
+import { clear, databaseForTests } from '../../../src/infra/config/database-connector'
 import { CreatePatientPostgresRespository } from '../../../src/infra/database'
 import { PatientModel } from '../../../src/infra/libs'
 
@@ -23,16 +23,18 @@ const fake = {
   }
 }
 
-describe.skip('Patient Postgres Respository', () => {
+describe('Patient Postgres Respository', () => {
   beforeAll(async () => {
-    connection = await connectionDB.postgresForTest()
-    await connection.runMigrations()
+    connection = await databaseForTests.postgres()
   }, 15000)
 
   afterAll(async () => {
-    await connection.dropDatabase()
     await connection.close()
   }, 15000)
+
+  beforeEach(async () => {
+    await clear()
+  })
 
   jest.retryTimes(6)
   test('should return false when there is already a patient with the same phone', async () => {

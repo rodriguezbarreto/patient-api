@@ -1,5 +1,5 @@
 import { Connection } from 'typeorm'
-import { connectionDB } from '../../../src/infra/config/connectorDB'
+import { databaseForTests, clear } from '../../../src/infra/config/database-connector'
 import { UpdatePatientPostgresRespositrory } from '../../../src/infra/database'
 import { PatientModel } from '../../../src/infra/libs'
 
@@ -24,16 +24,18 @@ const fake = {
 const wrongId = 'cf302c12-9d9a-4bad-87ff-c0a5c12637d8'
 let connection: Connection
 
-describe.skip('Patient Postgres Respository', () => {
+describe('Patient Postgres Respository', () => {
   beforeAll(async () => {
-    connection = await connectionDB.postgresForTest()
-    await connection.runMigrations()
+    connection = await databaseForTests.postgres()
   }, 15000)
 
   afterAll(async () => {
-    await connection.dropDatabase()
     await connection.close()
   }, 15000)
+
+  beforeEach(async () => {
+    await clear()
+  })
 
   jest.retryTimes(6)
   test('should call updatePatient with correct values', async () => {
