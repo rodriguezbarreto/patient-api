@@ -1,4 +1,4 @@
-import { Connection, getRepository } from 'typeorm'
+import { Connection } from 'typeorm'
 import { connectionDB } from '../../../src/infra/config/connectorDB'
 import { UpdatePatientPostgresRespositrory } from '../../../src/infra/database'
 import { PatientModel } from '../../../src/infra/libs'
@@ -28,11 +28,18 @@ describe('Patient Postgres Respository', () => {
   beforeAll(async () => {
     connection = await connectionDB.postgresForTest()
     await connection.runMigrations()
-  })
+  }, 10000)
 
   afterAll(async () => {
     await connection.dropDatabase()
     await connection.close()
+  }, 10000)
+
+  test('should call updatePatient with correct values', async () => {
+    const sut = new UpdatePatientPostgresRespositrory()
+    const repositorySpy = jest.spyOn(sut, 'updatePatient')
+    await sut.updatePatient(fake.updates, wrongId)
+    expect(repositorySpy).toHaveBeenCalledWith(fake.updates, wrongId)
   })
 
   test('should return false when not find patient', async () => {
@@ -42,7 +49,7 @@ describe('Patient Postgres Respository', () => {
   })
 
   test('should return true when updating patient', async () => {
-    const repo = getRepository(PatientModel)
+    const repo = connection.getRepository(PatientModel)
     await repo.save(fake.insert)
     const patient = await repo.findOne({ where: { name: 'Daniel' } })
     const sut = new UpdatePatientPostgresRespositrory()
