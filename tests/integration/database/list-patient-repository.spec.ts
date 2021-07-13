@@ -26,17 +26,16 @@ const fakeListInsert = [
 describe('List Patient Postgres Respository', () => {
   beforeAll(async () => {
     connection = await databaseForTests.postgres()
-  }, 15000)
+  })
 
   afterAll(async () => {
     await connection.close()
-  }, 15000)
+  })
 
   beforeEach(async () => {
     await clear()
   })
 
-  jest.retryTimes(6)
   test('should return patients list', async () => {
     const repo = connection.getRepository(PatientModel)
     await repo.save(fakeListInsert)
@@ -48,13 +47,12 @@ describe('List Patient Postgres Respository', () => {
         expect.objectContaining({ name: 'Fabio' })
       ])
     )
-  }, 15000)
+  })
 
-  jest.retryTimes(6)
   test('throw an exception if database return error', async () => {
     const sut = new ListPatientPostgresRepository()
     jest.spyOn(sut, 'listPatients').mockReturnValueOnce(new Promise((resolve, reject) => reject(new Error())))
     const promise = sut.listPatients()
     expect(promise).rejects.toThrow()
-  }, 15000)
+  })
 })

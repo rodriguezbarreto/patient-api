@@ -27,17 +27,16 @@ const fakeList = [
 describe('Integration test List Patient', () => {
   beforeAll(async () => {
     connection = await databaseForTests.postgres()
-  }, 15000)
+  })
 
   afterAll(async () => {
     await connection.close()
-  }, 15000)
+  })
 
   beforeEach(async () => {
     await clear()
   })
 
-  jest.retryTimes(6)
   test('should return 200 and "no registered patient"', async () => {
     await request(app)
       .get('/v1/patient/list')
@@ -47,9 +46,8 @@ describe('Integration test List Patient', () => {
         data: 'no registered patient',
         error: null
       })
-  }, 15000)
+  })
 
-  jest.retryTimes(6)
   test('should return list patients', async () => {
     const repo = connection.getRepository(PatientModel)
     await repo.save(fakeList)
@@ -59,5 +57,5 @@ describe('Integration test List Patient', () => {
       expect.objectContaining({ name: 'Daniel' }),
       expect.objectContaining({ name: 'Fabio' })
     ]))
-  }, 15000)
+  })
 })

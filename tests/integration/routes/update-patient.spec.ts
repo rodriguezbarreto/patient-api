@@ -20,23 +20,22 @@ const fake = {
 describe('Integration test Update Patient', () => {
   beforeAll(async () => {
     connection = await databaseForTests.postgres()
-  }, 15000)
+  })
 
   afterAll(async () => {
     await connection.close()
-  }, 15000)
+  })
 
   beforeEach(async () => {
     await clear()
   })
 
-  jest.retryTimes(6)
   test('should return 400 when not find patient', async () => {
     await request(app)
       .put(`/v1/patient/update/${wrongId}`)
       .send(fake.insert)
       .expect(400)
-  }, 15000)
+  })
 
   jest.retryTimes(6)
   test('should return 200 when updating patient', async () => {
@@ -47,5 +46,5 @@ describe('Integration test Update Patient', () => {
       .put(`/v1/patient/update/${patient.id}`)
       .send(patient)
       .expect(200)
-  }, 15000)
+  })
 })
