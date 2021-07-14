@@ -1,12 +1,12 @@
 import app from '../../../src/infra/config/app'
 import request from 'supertest'
 import { Connection } from 'typeorm'
-import { databaseForTests, clear } from '../../../src/infra/config/database-connector'
+import { database, clear } from '../../../src/infra/config/database-connector'
 
 let connection: Connection
 describe.skip('Integration test Create Patient', () => {
   beforeAll(async () => {
-    connection = await databaseForTests.postgres()
+    connection = await database.postgres()
   })
 
   afterAll(async () => {

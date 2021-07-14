@@ -1,7 +1,7 @@
 import app from '../../../src/infra/config/app'
 import request from 'supertest'
 import { Connection } from 'typeorm'
-import { databaseForTests, clear } from '../../../src/infra/config/database-connector'
+import { database, clear } from '../../../src/infra/config/database-connector'
 import { PatientModel } from '../../../src/infra/libs'
 
 let connection: Connection
@@ -19,7 +19,7 @@ const fake = {
 
 describe('Integration test Update Patient', () => {
   beforeAll(async () => {
-    connection = await databaseForTests.postgres()
+    connection = await database.postgres()
   })
 
   afterAll(async () => {

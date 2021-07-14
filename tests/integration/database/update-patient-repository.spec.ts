@@ -1,5 +1,5 @@
 import { Connection } from 'typeorm'
-import { databaseForTests, clear } from '../../../src/infra/config/database-connector'
+import { database, clear } from '../../../src/infra/config/database-connector'
 import { UpdatePatientPostgresRespositrory } from '../../../src/infra/database'
 import { PatientModel } from '../../../src/infra/libs'
 
@@ -26,7 +26,7 @@ let connection: Connection
 
 describe('Patient Postgres Respository', () => {
   beforeAll(async () => {
-    connection = await databaseForTests.postgres()
+    connection = await database.postgres()
   })
 
   afterAll(async () => {

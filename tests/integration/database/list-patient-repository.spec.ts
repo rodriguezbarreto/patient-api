@@ -1,5 +1,5 @@
 import { Connection } from 'typeorm'
-import { databaseForTests, clear } from '../../../src/infra/config/database-connector'
+import { database, clear } from '../../../src/infra/config/database-connector'
 import { ListPatientPostgresRepository } from '../../../src/infra/database'
 import { PatientModel } from '../../../src/infra/libs'
 
@@ -25,7 +25,7 @@ const fakeListInsert = [
 
 describe('List Patient Postgres Respository', () => {
   beforeAll(async () => {
-    connection = await databaseForTests.postgres()
+    connection = await database.postgres()
   })
 
   afterAll(async () => {

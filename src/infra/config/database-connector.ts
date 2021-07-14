@@ -1,18 +1,6 @@
 import { Connection, createConnection, getConnection } from 'typeorm'
 
 export const database = {
-  postgres: async (): Promise<void> => {
-    try {
-      const connection = await createConnection()
-      console.log(`✔ Connection with Postgres: ON (database: ${connection.options.database})`)
-      process.on('SIGINT', async () => await connection.close().then(() => console.log('🛑 Connection with Postgres database: OFF')))
-    } catch (err) {
-      console.log(`✘ Unable connect to postgres database: ${err.message}`)
-    }
-  }
-}
-
-export const databaseForTests = {
   postgres: async (): Promise<Connection> => {
     return await createConnection()
   }
