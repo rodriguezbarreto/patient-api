@@ -1,10 +1,10 @@
 module.exports = {
     type: 'postgres',
-    host: 'localhost',
-    port: process.env.NODE_ENV==='test'? 5434: 5433,
+    host: process.env.NODE_ENV==='test'? 'db_test': 'db',
+    port: 5432,
     username: 'postgres',
     password: 'postgres',
-    database: 'pebmedapi',
+    database: process.env.NODE_ENV==='test'? 'pebmedapi_test': 'pebmedapi',
     dropSchema: true,
     logging: false,
     synchroize: true,

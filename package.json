@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "ts-node src/infra/server.ts",
     "dev": "ts-node-dev src/infra/server.ts",
     "orm": "ts-node-dev ./node_modules/typeorm/cli.js",
     "migrations": "yarn orm migration:run",
