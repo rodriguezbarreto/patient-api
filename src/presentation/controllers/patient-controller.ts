@@ -1,9 +1,7 @@
 import { HttpResponse, HttpRequest, Controller } from '../protocols'
 import { sendResponse, fieldsValidator } from '../utils-presentation'
 import { patientFields } from '../models-fields'
-import { CreatePatient } from '../../domain'
-import { ListPatients } from '../../domain/usecases/list-patients'
-import { UpdatePatient } from '../../domain/usecases/update-patient'
+import { CreatePatient, ListPatients, UpdatePatient, DeletePatient } from '../../domain'
 
 export class CreatePatientController implements Controller {
   constructor (private readonly createService: CreatePatient) {}
@@ -44,5 +42,17 @@ export class UpdatePatientController implements Controller {
     } catch (err) {
       return sendResponse(500, err.message)
     }
+  }
+}
+
+export class DeletePatientController implements Controller {
+  constructor (private readonly deleteService: DeletePatient) {}
+
+  async service (request: HttpRequest): Promise<HttpResponse> {
+    try {
+      const { id } = request.params
+      const result = await this.deleteService.delete(id)
+      return result ? sendResponse(200) : sendResponse(400)
+    } catch (err) {}
   }
 }

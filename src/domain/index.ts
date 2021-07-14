@@ -1,2 +1,5 @@
 export * from './entities/patient'
 export * from './usecases/create-patient'
+export * from './usecases/delete-patient'
+export * from './usecases/update-patient'
+export * from './usecases/list-patients'

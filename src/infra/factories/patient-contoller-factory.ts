@@ -1,7 +1,7 @@
 
-import { CreatePatientService, ListPatientsService, UpdatePatientService } from '../../data'
-import { CreatePatientController, ListPatientsController, UpdatePatientController } from '../../presentation/controllers/patient-controller'
-import { CreatePatientPostgresRespository, ListPatientPostgresRepository, UpdatePatientPostgresRespositrory } from '../database'
+import { CreatePatientService, ListPatientsService, UpdatePatientService, DeletePatientService } from '../../data'
+import { CreatePatientController, ListPatientsController, UpdatePatientController, DeletePatientController } from '../../presentation/controllers/patient-controller'
+import { CreatePatientPostgresRespository, ListPatientPostgresRepository, UpdatePatientPostgresRespositrory, DeletePatientPostgresRepository } from '../database'
 import { Controller } from '../../presentation/protocols'
 
 export const makeCreatePatientController = (): Controller => {
@@ -20,4 +20,10 @@ export const makeUpdatePatientController = (): Controller => {
   const repository = new UpdatePatientPostgresRespositrory()
   const service = new UpdatePatientService(repository)
   return new UpdatePatientController(service)
+}
+
+export const makeDeletePatientController = (): Controller => {
+  const repository = new DeletePatientPostgresRepository()
+  const service = new DeletePatientService(repository)
+  return new DeletePatientController(service)
 }
