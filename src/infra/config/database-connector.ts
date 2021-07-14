@@ -6,6 +6,11 @@ export const database = {
   }
 }
 
+export const databaseForTests = {
+  postgres: async (): Promise<Connection> => {
+    return await createConnection()
+  }
+}
 export const clear = async (): Promise<void> => {
   const connection = getConnection()
   const entities = connection.entityMetadatas
