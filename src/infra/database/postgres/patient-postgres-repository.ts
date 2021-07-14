@@ -1,5 +1,5 @@
 import { getRepository } from 'typeorm'
-import { CreatePatientRepository, ListPatientsRepository, UpdatePatientRepository } from '../../../data'
+import { CreatePatientRepository, ListPatientsRepository, UpdatePatientRepository, DeletePatientRepository } from '../../../data'
 import { CreatePatient, Patient } from '../../../domain'
 import { UpdatePatient } from '../../../domain/usecases/update-patient'
 import { PatientModel } from '../../libs/typeorm/models/patient-model'
@@ -29,5 +29,15 @@ export class UpdatePatientPostgresRespositrory implements UpdatePatientRepositor
     patient = { ...patient, ...patientUpdates }
     const result = await repository.save(patient)
     return !!result?.id
+  }
+}
+
+export class DeletePatientPostgresRepository implements DeletePatientRepository {
+  async deletePatient (id: string): Promise<boolean> {
+    const repository = getRepository(PatientModel)
+    const patient = await repository.findOne(id)
+    if (!patient) return false
+    const result = await repository.remove(patient)
+    return !!result
   }
 }
