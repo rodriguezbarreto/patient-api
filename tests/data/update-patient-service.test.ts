@@ -31,15 +31,15 @@ const mockSut = (): SutTypes => {
   return { sut, fakeUpdatePatientRespository }
 }
 
-describe('Create Patient Service', () => {
-  test('should call CreatePatientRespository with correct values', () => {
+describe('Update Patient Service', () => {
+  test('should call UpdatePatientRespository with correct values', () => {
     const { sut, fakeUpdatePatientRespository } = mockSut()
     const repositorySpy = jest.spyOn(fakeUpdatePatientRespository, 'updatePatient')
     sut.update(fakeDataPatient, fakeId)
     expect(repositorySpy).toHaveBeenCalledWith(fakeDataPatient, fakeId)
   })
 
-  test('throw an exception if CreatePatientRespository throws', async () => {
+  test('throw an exception if UpdatePatientRespository throws', async () => {
     const { sut, fakeUpdatePatientRespository } = mockSut()
     jest.spyOn(fakeUpdatePatientRespository, 'updatePatient').mockReturnValueOnce(new Promise((resolve, reject) => reject(new Error())))
     const promise = sut.update(fakeDataPatient, fakeId)

@@ -12,3 +12,7 @@ export interface ListPatientsRepository {
 export interface UpdatePatientRepository {
   updatePatient: (patietUpdates: UpdatePatient.Params, id: string) => Promise<boolean>
 }
+
+export interface DeletePatientRepository {
+  deletePatient: (id: string) => Promise<boolean>
+}

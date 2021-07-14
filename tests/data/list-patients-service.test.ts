@@ -43,7 +43,7 @@ const mockSut = (): SutTypes => {
   return { sut, fakeListPatientsRespository }
 }
 
-describe('Create Patient Service', () => {
+describe('List Patient Service', () => {
   test('should call ListPatientsRespository correctly', () => {
     const { sut, fakeListPatientsRespository } = mockSut()
     const repositorySpy = jest.spyOn(fakeListPatientsRespository, 'listPatients')
