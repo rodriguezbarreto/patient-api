@@ -11,9 +11,9 @@
 
 3. After that, go to: `http://localhost:4000/v1`
 
-4. For tests run: `yarn test`
+4. To tests, run: `yarn test`
 
-5. To stop the run app: `docker down`
+5. To stop the app, run: `docker down`
 
 
 ### Available routes
