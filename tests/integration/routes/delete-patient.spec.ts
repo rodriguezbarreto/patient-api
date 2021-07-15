@@ -1,10 +1,9 @@
 import app from '../../../src/infra/config/app'
 import request from 'supertest'
-import { Connection } from 'typeorm'
-import { database, clear } from '../../../src/infra/config/database-connector'
+import { getConnection } from 'typeorm'
+import { postgres } from '../../../src/infra/config/database-connector'
 import { PatientModel } from '../../../src/infra/libs'
 
-let connection: Connection
 const wrongId = 'cf302c12-9d9a-4bad-87ff-c0a5c12637d8'
 const fake = {
   insert: {
@@ -19,15 +18,15 @@ const fake = {
 
 describe('Integration test Delete Patient', () => {
   beforeAll(async () => {
-    connection = await database.postgres()
+    await postgres.open()
   })
 
   afterAll(async () => {
-    await connection.close()
+    await postgres.close()
   })
 
   beforeEach(async () => {
-    await clear()
+    await postgres.clear()
   })
 
   test('should return 400 when not find patient', async () => {
@@ -39,7 +38,7 @@ describe('Integration test Delete Patient', () => {
 
   jest.retryTimes(6)
   test('should return 200 when delete patient', async () => {
-    const repo = connection.getRepository(PatientModel)
+    const repo = getConnection().getRepository(PatientModel)
     await repo.save(fake.insert)
     const patient = await repo.findOne({ where: { name: 'Daniel' } })
     await request(app)

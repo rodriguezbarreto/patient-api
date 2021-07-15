@@ -1,20 +1,18 @@
 import app from '../../../src/infra/config/app'
 import request from 'supertest'
-import { Connection } from 'typeorm'
-import { database, clear } from '../../../src/infra/config/database-connector'
+import { postgres } from '../../../src/infra/config/database-connector'
 
-let connection: Connection
 describe.skip('Integration test Create Patient', () => {
   beforeAll(async () => {
-    connection = await database.postgres()
+    await postgres.open()
   })
 
   afterAll(async () => {
-    await connection.close()
+    await postgres.close()
   })
 
   beforeEach(async () => {
-    await clear()
+    await postgres.clear()
   })
 
   test('should return 201 when create new patient', async () => {

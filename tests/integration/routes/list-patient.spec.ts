@@ -1,10 +1,9 @@
 import request from 'supertest'
-import { Connection } from 'typeorm'
+import { getConnection } from 'typeorm'
 import app from '../../../src/infra/config/app'
-import { database, clear } from '../../../src/infra/config/database-connector'
+import { postgres } from '../../../src/infra/config/database-connector'
 import { PatientModel } from '../../../src/infra/libs'
 
-let connection: Connection
 const fakeList = [
   {
     name: 'Daniel',
@@ -26,15 +25,15 @@ const fakeList = [
 
 describe('Integration test List Patient', () => {
   beforeAll(async () => {
-    connection = await database.postgres()
+    await postgres.open()
   })
 
   afterAll(async () => {
-    await connection.close()
+    await postgres.close()
   })
 
   beforeEach(async () => {
-    await clear()
+    await postgres.clear()
   })
 
   test('should return 200 and "no registered patient"', async () => {
@@ -49,7 +48,7 @@ describe('Integration test List Patient', () => {
   })
 
   test('should return list patients', async () => {
-    const repo = connection.getRepository(PatientModel)
+    const repo = getConnection().getRepository(PatientModel)
     await repo.save(fakeList)
     const response = await request(app).get('/v1/patient/list')
     expect(response.statusCode).toBe(200)

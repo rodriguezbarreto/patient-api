@@ -1,9 +1,8 @@
-import { Connection } from 'typeorm'
-import { database, clear } from '../../../src/infra/config/database-connector'
+import { getConnection } from 'typeorm'
+import { postgres } from '../../../src/infra/config/database-connector'
 import { ListPatientPostgresRepository } from '../../../src/infra/database'
 import { PatientModel } from '../../../src/infra/libs'
 
-let connection: Connection
 const fakeListInsert = [
   {
     name: 'Daniel',
@@ -25,19 +24,19 @@ const fakeListInsert = [
 
 describe('List Patient Postgres Respository', () => {
   beforeAll(async () => {
-    connection = await database.postgres()
+    await postgres.open()
   })
 
   afterAll(async () => {
-    await connection.close()
+    await postgres.close()
   })
 
   beforeEach(async () => {
-    await clear()
+    await postgres.clear()
   })
 
   test('should return patients list', async () => {
-    const repo = connection.getRepository(PatientModel)
+    const repo = getConnection().getRepository(PatientModel)
     await repo.save(fakeListInsert)
     const sut = new ListPatientPostgresRepository()
     const fakePatienstList = await sut.listPatients()

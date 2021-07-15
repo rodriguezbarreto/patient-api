@@ -1,4 +1,4 @@
-FROM node:12.22
+FROM node:14.5.0
 
 WORKDIR /src
 
@@ -10,4 +10,4 @@ COPY . .
 
 EXPOSE 4000
 
-CMD ["npm", "run", "start", '/init.sql']
+CMD ["npm", "run", "dev"]

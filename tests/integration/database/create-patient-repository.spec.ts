@@ -1,9 +1,8 @@
-import { Connection } from 'typeorm'
-import { clear, database } from '../../../src/infra/config/database-connector'
+import { getConnection } from 'typeorm'
+import { postgres } from '../../../src/infra/config/database-connector'
 import { CreatePatientPostgresRespository } from '../../../src/infra/database'
 import { PatientModel } from '../../../src/infra/libs'
 
-let connection: Connection
 const fake = {
   insert1: {
     name: 'Daniel',
@@ -25,19 +24,19 @@ const fake = {
 
 describe('Patient Postgres Respository', () => {
   beforeAll(async () => {
-    connection = await database.postgres()
+    await postgres.open()
   })
 
   afterAll(async () => {
-    await connection.close()
+    await postgres.close()
   })
 
   beforeEach(async () => {
-    await clear()
+    await postgres.clear()
   })
 
   test('should return false when there is already a patient with the same phone', async () => {
-    const repo = connection.getRepository(PatientModel)
+    const repo = getConnection().getRepository(PatientModel)
     await repo.save(fake.insert1)
     const sut = new CreatePatientPostgresRespository()
     const fakeNewPatient = await sut.createPatient(fake.insert1)
