@@ -23,7 +23,8 @@ describe.skip('Integration test Create Patient', () => {
         phone: '48123456789',
         gender: 'male',
         birthDate: '28/03/50',
-        height: 175
+        height: 175,
+        weight: 80
       })
       .expect(201)
   })
