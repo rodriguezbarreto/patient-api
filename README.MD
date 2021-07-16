@@ -7,13 +7,15 @@
 
 1. install [Docker](https://docs.docker.com/engine/install/ubuntu/) and [Docker Compose](https://docs.docker.com/compose/install/).
 
-2. Start the app using: `docker-compose up`.
+2. To install the packages, run : `yarn install`
 
-3. After that, go to: `http://localhost:4000/v1`
+3. Start the app using: `docker-compose up`.
 
-4. To tests, run: `yarn test`
+4. After that, go to: `http://localhost:4000/v1`
 
-5. To stop the app, run: `docker down`
+5. To tests, run: `yarn test`
+
+6. To stop the app, run: `docker down`
 
 
 ### Available routes
