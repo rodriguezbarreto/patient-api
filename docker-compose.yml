@@ -6,7 +6,7 @@ services:
         environment:
             POSTGRES_PASSWORD: postgres
             POSTGRES_USER: postgres
-            POSTGRES_DB: pebmedapi
+            POSTGRES_DB: database_api
         volumes:
             - ./pgdata:/usr/var/lib/postgresql/data
     db_test:
@@ -15,14 +15,14 @@ services:
         environment:
             POSTGRES_PASSWORD: postgres
             POSTGRES_USER: postgres
-            POSTGRES_DB: pebmedapi
+            POSTGRES_DB: database_api
         volumes:
             - ./pgdata_test:/usr/var/lib/postgresql/data
 
     api:
         build: .
         restart: always
-        container_name: pebmedapi
+        container_name: api
         links: 
             - db
             - db_test

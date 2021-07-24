@@ -4,7 +4,7 @@ module.exports = {
     port: 5432,
     username: 'postgres',
     password: 'postgres',
-    database: 'pebmedapi',
+    database: 'database_api',
     migrationsRun: true,
     entities: ['./src/infra/libs/typeorm/models/*.ts'],
     migrations: ['./src/infra/libs/typeorm/migrations/*.ts'],

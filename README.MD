@@ -30,4 +30,4 @@
 
 ### Architectural diagram
 
-[![PEBMED-API-1.png](https://i.postimg.cc/QN4zmMLk/PEBMED-API-1.png)](https://postimg.cc/MXBtKqpv)
+[![API-TEMPLATE.png](https://i.postimg.cc/3rnrML34/API-TEMPLATE.png)](https://postimg.cc/PNvnYQpT)
